@@ -26,6 +26,10 @@ jobs:
 
         timeout-minutes: 20
 
+        concurrency:
+            group: ${{ github.workflow }}-${{ github.ref }}
+            cancel-in-progress: true
+
         env:
             php-extensions: gd, gmp, redis, mailparse
             php-extensions-key: ext-cache-copilot-v1
